@@ -6,7 +6,7 @@ option java_package= "com.sdj3.dataServerSDJ3.protobuf.TrayProtobuf";
 message CreateTrayMessage{
 
   string  name = 1;
-  double maxWeight = 2;
+  int32 maxWeight = 2;
 }
 message ReturnMessage{
   string message = 1;
@@ -14,7 +14,7 @@ message ReturnMessage{
 message ReturnTrayMessage{
   int32 id =1;
   string  name = 2;
-  double maxWeight = 3;
+  int32 maxWeight = 3;
 }
 
 service TrayService{
