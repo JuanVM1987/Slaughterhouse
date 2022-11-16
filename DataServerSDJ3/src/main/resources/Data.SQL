@@ -35,7 +35,7 @@ create table "animal"(
 create table "tray"(
                        id SERIAL PRIMARY KEY ,
                        name VARCHAR(50) not null ,
-                       max_weight INTEGER check ( max_weight <=200 )
+                       max_weight INTEGER not null
 
 );
 create table "part"(

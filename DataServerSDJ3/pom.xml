@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.SDJ3</groupId>
-    <artifactId>slaughterhouseSDJ3</artifactId>
+    <artifactId>DataServerSDJ3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>slaughterhouseSDJ3</name>
-    <description>slaughterhouseSDJ3</description>
+    <name>DataServerSDJ3</name>
+    <description>DataServerSDJ3</description>
     <properties>
         <java.version>17</java.version>
     </properties>
