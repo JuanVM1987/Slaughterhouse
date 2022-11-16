@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/DataServerSDJ3/DataServerSDJ3.iml" filepath="$PROJECT_DIR$/DataServerSDJ3/DataServerSDJ3.iml" />
       <module fileurl="file://$PROJECT_DIR$/LogicServerSDJ3/LogicServerSDJ3.iml" filepath="$PROJECT_DIR$/LogicServerSDJ3/LogicServerSDJ3.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Slaughterhouse.iml" filepath="$PROJECT_DIR$/.idea/Slaughterhouse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataServerSDJ3/slaughterhouseSDJ3.iml" filepath="$PROJECT_DIR$/DataServerSDJ3/slaughterhouseSDJ3.iml" />
     </modules>
   </component>
 </project>
