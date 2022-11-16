@@ -9,6 +9,4 @@ public class Part {
     private int id;
     private String name;
     private double weight;
-
-
 }
