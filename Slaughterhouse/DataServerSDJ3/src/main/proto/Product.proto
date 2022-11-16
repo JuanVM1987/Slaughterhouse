@@ -1,0 +1,23 @@
+syntax="proto3";
+
+option java_multiple_files=true;
+option java_package= "com.sdj3.slaughterhousesdj3.protobuf.productProtobuf";
+
+message ProductMessage{
+  int32 id=1;
+  string name=2;
+  double weight=3;
+}
+
+message AnimalMessage{
+  int32 id=1;
+  string origen=2;
+  double weight=3;
+}
+message ListProduct{
+  repeated ProductMessage ProductMessage=1;
+}
+service ProductService {
+  rpc getAllProductFromAnimal(AnimalMessage) returns(ListProduct);
+
+}
