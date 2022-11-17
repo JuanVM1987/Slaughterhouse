@@ -1,0 +1,40 @@
+syntax="proto3";
+
+option java_multiple_files=true;
+option java_package= "com.sdj3.logicServerSDJ3.protobuf.animalProtobuf";
+
+
+message AnimalIdMessage{
+  int32 id =1;
+}
+
+message ProductMessage{
+  int32 id=1;
+  string name=2;
+  double weight=3;
+}
+
+message AnimalMessage{
+  int32 id=1;
+  string origen=2;
+  double weight=3;
+  string arrivedDate=4;
+}
+message RegisterAnimalMessage{
+  string origen=1;
+  double weight=2;
+  string arrivedDate=3;
+}
+message EmptyMessage{
+
+}
+
+message ListAnimals{
+  repeated AnimalMessage animalMessage=1;
+}
+service AnimalService {
+  rpc getAnimalFromProduct(ProductMessage) returns(ListAnimals);
+  rpc getAllAnimals(EmptyMessage) returns(ListAnimals);
+  rpc getAnimalById(AnimalIdMessage) returns(AnimalMessage);
+  rpc registerAnimal(RegisterAnimalMessage)returns(AnimalMessage);
+}

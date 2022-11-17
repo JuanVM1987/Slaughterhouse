@@ -1,7 +1,7 @@
 syntax="proto3";
 
 option java_multiple_files=true;
-option java_package= "com.sdj3.dataServerSDJ3.protobuf.partProtobuf";
+option java_package= "com.sdj3.logicServerSDJ3.protobuf.partProtobuf";
 
 message PartMessage {
 
@@ -17,10 +17,6 @@ message AddPartMessage {
   double weight=3;
   int32 animalId=4;
   int32 trayId =5;
-}
-message ErrorResponse1{
-  int32 status = 1;
-  string message = 2;
 }
 
 service PartService{
