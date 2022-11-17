@@ -1,28 +1,24 @@
-package com.sdj3.dataServerSDJ3.service;
+package com.sdj3.dataServerSDJ3.gRPCConnection;
 
 
-import com.sdj3.dataServerSDJ3.DAOs.ProductImp;
-import com.sdj3.dataServerSDJ3.DAOs.interfaceDao.IProductDAO;
-import com.sdj3.dataServerSDJ3.Model.Animal;
-import com.sdj3.dataServerSDJ3.Model.Product;
-import com.sdj3.dataServerSDJ3.protobuf.productProtobuf.AnimalMessage;
-import com.sdj3.dataServerSDJ3.protobuf.productProtobuf.ListProduct;
+import com.sdj3.dataServerSDJ3.DAOs.ProductDAO;
 import com.sdj3.dataServerSDJ3.protobuf.productProtobuf.ProductServiceGrpc;
-import io.grpc.stub.StreamObserver;
 import org.lognet.springboot.grpc.GRpcService;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.sql.SQLException;
-import java.util.List;
 @GRpcService
-public class ProductServiceImp extends ProductServiceGrpc.ProductServiceImplBase {
- private IProductDAO productDAO = ProductImp.getInstance();
+public class ProductGrpcConnection extends ProductServiceGrpc.ProductServiceImplBase {
+ private ProductDAO productDAO;
 
-    public ProductServiceImp() throws SQLException {
 
+    @Autowired
+    public ProductGrpcConnection(ProductDAO productDAO)  {
+
+        this.productDAO = productDAO;
     }
 
 
-    @Override
+   /* @Override
     public void getAllProductFromAnimal(AnimalMessage request, StreamObserver<ListProduct> responseObserver){
         System.out.println("Received Request =========>"+ request.toString());
 
@@ -37,5 +33,5 @@ public class ProductServiceImp extends ProductServiceGrpc.ProductServiceImplBase
         responseObserver.onNext(reply);
         responseObserver.onCompleted();
     }
-
+*/
 }
