@@ -1,0 +1,22 @@
+syntax="proto3";
+
+option java_multiple_files=true;
+option java_package= "com.sdj3.dataServerSDJ3.protobuf.retrieveInfoProtobuf";
+
+message ProductMessage{
+  int32 id=1;
+  string name=2;
+  double weight=3;
+}
+
+message RetrieveAnimalMessage{
+  int32 id=1;
+  string origen=2;
+  double weight=3;
+}
+message ReturnListProduct{
+  repeated ProductMessage ProductMessage=1;
+}
+service RetrieveService{
+  rpc getAllProductFromAnimal(RetrieveAnimalMessage) returns(ReturnListProduct);
+}

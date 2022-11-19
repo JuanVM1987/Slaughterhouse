@@ -1,13 +1,12 @@
 package com.sdj3.dataServerSDJ3.share.entity;
 
-import com.sdj3.dataServerSDJ3.protobuf.productProtobuf.ProductMessage;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -34,8 +33,4 @@ public class Product {
         this.weight = weight;
     }
 
-    public ProductMessage buildAnimalMessage()
-    {
-        return ProductMessage.newBuilder().setId(id).setName(name).setWeight(weight).build();
-    }
 }

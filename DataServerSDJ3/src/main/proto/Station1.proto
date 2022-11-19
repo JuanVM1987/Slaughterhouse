@@ -1,7 +1,7 @@
 syntax="proto3";
 
 option java_multiple_files=true;
-option java_package= "com.sdj3.dataServerSDJ3.protobuf.animalProtobuf";
+option java_package= "com.sdj3.dataServerSDJ3.protobuf.station1Protobuf";
 
 
 message AnimalIdMessage{
@@ -32,7 +32,7 @@ message EmptyMessage{
 message ListAnimals{
   repeated AnimalMessage animalMessage=1;
 }
-service AnimalService {
+service Station1Service {
   rpc getAnimalFromProduct(ProductMessage) returns(ListAnimals);
   rpc getAllAnimals(EmptyMessage) returns(ListAnimals);
   rpc getAnimalById(AnimalIdMessage) returns(AnimalMessage);

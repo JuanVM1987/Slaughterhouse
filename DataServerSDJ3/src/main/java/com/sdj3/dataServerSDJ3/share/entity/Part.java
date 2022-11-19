@@ -25,11 +25,6 @@ public class Part {
     @ManyToOne(fetch = FetchType.LAZY)
     private Animal animal;
 
-    public Part(String name, double weight) {
-        this.name = name;
-        this.weight = weight;
-    }
-
     public Part(String name, double weight, Tray tray, Animal animal) {
         this.name = name;
         this.weight = weight;

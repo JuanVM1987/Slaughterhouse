@@ -1,25 +1,26 @@
 package com.sdj3.dataServerSDJ3.gRPCConnection;
 
+import com.sdj3.dataServerSDJ3.DAOs.TrayDAO;
 
-import com.sdj3.dataServerSDJ3.DAOs.ProductDAO;
-import com.sdj3.dataServerSDJ3.protobuf.productProtobuf.ProductServiceGrpc;
+import com.sdj3.dataServerSDJ3.protobuf.retrieveInfoProtobuf.RetrieveServiceGrpc;
 import org.lognet.springboot.grpc.GRpcService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @GRpcService
-public class ProductGrpcConnection extends ProductServiceGrpc.ProductServiceImplBase {
- private ProductDAO productDAO;
+public class RetrieveInfoGrpcService extends RetrieveServiceGrpc.RetrieveServiceImplBase {
+
+    private final TrayDAO trayDAO;
 
 
     @Autowired
-    public ProductGrpcConnection(ProductDAO productDAO)  {
+    public RetrieveInfoGrpcService(TrayDAO trayDAO) {
+        this.trayDAO = trayDAO;
 
-        this.productDAO = productDAO;
     }
 
 
    /* @Override
-    public void getAllProductFromAnimal(AnimalMessage request, StreamObserver<ListProduct> responseObserver){
+    public void getAllProductFromAnimal(RetrieveAnimalMessage request, StreamObserver<ListProduct> responseObserver){
         System.out.println("Received Request =========>"+ request.toString());
 
         Animal animal = new Animal(request.getId(),request.getOrigen(),request.getWeight());
@@ -34,4 +35,5 @@ public class ProductGrpcConnection extends ProductServiceGrpc.ProductServiceImpl
         responseObserver.onCompleted();
     }
 */
+
 }

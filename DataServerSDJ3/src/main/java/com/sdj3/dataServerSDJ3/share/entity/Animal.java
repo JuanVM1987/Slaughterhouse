@@ -1,7 +1,6 @@
 package com.sdj3.dataServerSDJ3.share.entity;
 
 
-import com.sdj3.dataServerSDJ3.protobuf.animalProtobuf.AnimalMessage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -48,8 +47,8 @@ public class Animal {
     }
 
 
-    public AnimalMessage buildAnimalMessage()
+ /*   public AnimalMessage buildAnimalMessage()
     {
         return AnimalMessage.newBuilder().setId(id).setOrigen(origen).setWeight(weight).setArrivedDate(arrivedDate.toString()).build();
-    }
+    }*/
 }
