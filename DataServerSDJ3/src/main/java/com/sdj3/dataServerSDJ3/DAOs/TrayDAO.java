@@ -11,7 +11,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 
 public interface TrayDAO extends JpaRepository<Tray,Integer> {
-    @Query(value = "SELECT SUM(weight) FROM part WHERE tray_id = ?1 and product_id is null", nativeQuery = true)
+    @Query(value = """
+            SELECT SUM(weight)
+            FROM part\s
+            WHERE tray_id = ?1 and product_id is null""", nativeQuery = true)
     Double getActualWeight(int trayId);
 
 }

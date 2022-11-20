@@ -5,7 +5,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,14 +21,12 @@ public class Product {
     @Column(nullable = false)
     private double weight;
     @OneToMany(
-
             mappedBy = "product"
-
     )
-    private Set<Part> parts= new HashSet<>();
+    private Set<Part> parts = new HashSet<>();
 
-    public Product(String name,double weight, Set<Part> partList) {
-        parts=partList;
+    public Product(String name, double weight, Set<Part> partList) {
+        parts = partList;
         this.name = name;
         this.weight = weight;
     }
