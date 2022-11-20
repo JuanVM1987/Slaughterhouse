@@ -20,16 +20,12 @@ public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(nullable = false)
     private String origen;
+    @Column(nullable = false)
     private double weight;
     private Date arrivedDate;
-    @OneToMany(
-            fetch = FetchType.LAZY,
-            mappedBy = "animal",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private Set<Part> parts =new HashSet<>();
+
 
     public Animal(String origen, double weight, Date arrivedDate) {
         this.origen = origen;
@@ -42,13 +38,5 @@ public class Animal {
         this.origen = origen;
         this.weight = weight;
     }
-    public void addPart (Part part){
-        parts.add(part);
-    }
 
-
- /*   public AnimalMessage buildAnimalMessage()
-    {
-        return AnimalMessage.newBuilder().setId(id).setOrigen(origen).setWeight(weight).setArrivedDate(arrivedDate.toString()).build();
-    }*/
 }

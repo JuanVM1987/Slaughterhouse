@@ -1,4 +1,4 @@
-package com.sdj3.dataServerSDJ3.gRPCConnection;
+package com.sdj3.dataServerSDJ3.gRPCService;
 
 
 import com.sdj3.dataServerSDJ3.DAOs.AnimalDAO;

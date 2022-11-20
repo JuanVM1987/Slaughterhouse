@@ -4,20 +4,25 @@ option java_multiple_files=true;
 option java_package= "com.sdj3.dataServerSDJ3.protobuf.station3Protobuf";
 
 message ProductMessage{
+  string name=1;
+  repeated PartIdMessage partIdMessage=2;
+}
+
+message PartIdMessage {
+  int32 partId=1;
+}
+message ReplayProductMessage{
   int32 id=1;
   string name=2;
   double weight=3;
+  repeated PartMessage partMessage=4;
 }
+message PartMessage {
 
-message AnimalMessage{
   int32 id=1;
-  string origen=2;
+  string name = 2;
   double weight=3;
 }
-message ListProduct{
-  repeated ProductMessage ProductMessage=1;
-}
-service Station3Service {
-  rpc getAllProductFromAnimal(AnimalMessage) returns(ListProduct);
-
+service Station3Service{
+  rpc createProduct(ProductMessage) returns(ReplayProductMessage);
 }

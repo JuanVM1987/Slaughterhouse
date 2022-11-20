@@ -1,34 +1,35 @@
 package com.sdj3.dataServerSDJ3.share.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private double weight;
     @OneToMany(
-            fetch = FetchType.LAZY,
-            mappedBy = "product",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+
+            mappedBy = "product"
+
     )
     private Set<Part> parts= new HashSet<>();
 
-    public Product(int id, String name, double weight) {
-        this.id = id;
+    public Product(String name,double weight, Set<Part> partList) {
+        parts=partList;
         this.name = name;
         this.weight = weight;
     }

@@ -1,4 +1,4 @@
-package com.sdj3.dataServerSDJ3.gRPCConnection;
+package com.sdj3.dataServerSDJ3.gRPCService;
 
 import com.sdj3.dataServerSDJ3.DAOs.AnimalDAO;
 import com.sdj3.dataServerSDJ3.DAOs.PartDAO;
@@ -29,8 +29,9 @@ public class Station2GrpcService extends Station2ServiceGrpc.Station2ServiceImpl
         this.animalDAO = animalDAO;
         this.trayDAO = trayDAO;
     }
+
     @Override
-    public void createTray(CreateTrayMessage request, StreamObserver<ReturnMessage> responseObserver) {
+    public void createTray(TrayMessage request, StreamObserver<ReturnMessage> responseObserver) {
         Tray tray = new Tray(request.getName(), request.getMaxWeight());
         Tray tray1 = trayDAO.save(tray);
 
@@ -42,38 +43,41 @@ public class Station2GrpcService extends Station2ServiceGrpc.Station2ServiceImpl
     }
 
     @Override
-    public void creatPart(AddPartMessage request, StreamObserver<PartMessage> response) {
-        Optional<Tray> tray = trayDAO.findById(request.getTrayId());
+    public void createPart(PartMessage request, StreamObserver<ReturnPartMessage> response) {
+
         Optional<Animal> animal = animalDAO.findById(request.getAnimalId());
-        Status status;
+
         if (animal.isEmpty()) {
-            status=Status.FAILED_PRECONDITION.withDescription("Animal Id not Fund");
-            response.onError(status.asRuntimeException());
+            handlerStatus("Animal with Id " + request.getAnimalId() + " is not Fund", response);
             return;
         }
+        Optional<Tray> tray = trayDAO.findById(request.getTrayId());
 
         if (tray.isEmpty()) {
-            status=Status.FAILED_PRECONDITION.withDescription("Tray Id not Fund");
-            response.onError(status.asRuntimeException());
+            handlerStatus("Tray with Id " + request.getTrayId() + " is not Fund", response);
             return;
         }
         Double actualWeight = trayDAO.getActualWeight(request.getTrayId());
 
-        if (actualWeight!=null && tray.get().getMax_weight() < actualWeight + request.getWeight()) {
-            status=Status.FAILED_PRECONDITION.withDescription("The tray with ID "+tray.get().getId()+" is full");
-
-            response.onError(status.asRuntimeException());
+        if (actualWeight != null && tray.get().getMax_weight() < actualWeight + request.getWeight()) {
+            handlerStatus("The tray with ID " + tray.get().getId() + " is full", response);
             return;
         }
-        Part part = partDAO.save(new Part(request.getName(), request.getWeight(), tray.get(), animal.get()));
+        Part part = partDAO.save(new Part(request.getName(), request.getWeight(),tray.get(), animal.get()));
 
 
-        PartMessage reply = PartMessage.newBuilder().setId(part.getId()).setName(part.getName())
-                .setWeight(part.getWeight()).setTrayId(part.getTray().getId())
+        ReturnPartMessage reply = ReturnPartMessage.newBuilder().setId(part.getId()).setName(part.getName())
+                .setWeight(part.getWeight()).setTrayId(tray.get().getId())
                 .setAnimalId(part.getAnimal().getId()).build();
         response.onNext(reply);
         response.onCompleted();
 
+    }
+
+    public void handlerStatus(String msg, StreamObserver<ReturnPartMessage> response) {
+        Status status = Status.FAILED_PRECONDITION.withDescription(msg);
+
+        response.onError(status.asRuntimeException());
     }
 
 
