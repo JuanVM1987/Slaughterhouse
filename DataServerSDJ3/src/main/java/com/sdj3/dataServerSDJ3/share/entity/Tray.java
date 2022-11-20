@@ -1,16 +1,14 @@
 package com.sdj3.dataServerSDJ3.share.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Tray {
@@ -21,10 +19,8 @@ public class Tray {
     private int max_weight;
 
     @OneToMany(
-            fetch = FetchType.LAZY,
-            mappedBy = "tray",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+            mappedBy = "tray"
+
     )
     private Set<Part> parts= new HashSet<>();
 

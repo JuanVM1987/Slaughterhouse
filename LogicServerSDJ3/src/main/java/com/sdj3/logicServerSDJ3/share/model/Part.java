@@ -16,21 +16,12 @@ public class Part {
     private int id;
     private String name;
     private double weight;
-    private Tray tray;
+    private Animal animalId;
 
-    private Product product;
-
-    private Animal animal;
-
-    public Part(String name, double weight) {
+    public Part(int id,String name, double weight) {
         this.name = name;
         this.weight = weight;
+        this.id=id;
     }
 
-    public Part(String name, double weight, Tray tray, Animal animal) {
-        this.name = name;
-        this.weight = weight;
-        this.tray = tray;
-        this.animal = animal;
-    }
 }

@@ -9,14 +9,52 @@ message ProductMessage{
   double weight=3;
 }
 
-message RetrieveAnimalMessage{
+message AnimalMessage{
   int32 id=1;
   string origen=2;
   double weight=3;
+  string arrivedDate=4;
 }
-message ReturnListProduct{
+message AnimalIdMessage{
+  int32 id =1;
+}
+message ProductIdMessage{
+  int32 id =1;
+}
+message ListProduct{
   repeated ProductMessage ProductMessage=1;
 }
+message ListAnimals{
+  repeated AnimalMessage animalMessage=1;
+}
+
+message EmptyMessage{
+
+}
+message TrayIdMessage{
+  int32 id =1;
+}
+message TrayMessage{
+  int32 id=1;
+  string name=2;
+  int32 maxWeight = 3;
+}
+message PartMessage{
+  int32 partId=1;
+  string name =2;
+  double weight=3;
+}
+message ListTray{
+  repeated TrayMessage trayMessage=1;
+}
+message ListParts{
+  repeated PartMessage partMessage=1;
+}
 service RetrieveService{
-  rpc getAllProductFromAnimal(RetrieveAnimalMessage) returns(ReturnListProduct);
+  rpc getAllProductFromAnimal(AnimalIdMessage) returns(ListProduct);
+  rpc getAnimalFromProduct(ProductIdMessage) returns(ListAnimals);
+  rpc getAllAnimals(EmptyMessage) returns(ListAnimals);
+  rpc getAnimalById(AnimalIdMessage) returns(AnimalMessage);
+  rpc getAllTrays(EmptyMessage)returns(ListTray);
+  rpc getAllPartsInTray(TrayIdMessage) returns(ListParts);
 }

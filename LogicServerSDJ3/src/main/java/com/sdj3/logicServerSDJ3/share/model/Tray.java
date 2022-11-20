@@ -16,7 +16,6 @@ public class Tray {
     private String name;
     private int max_weight;
 
-
     private List<Part> parts;
 
     public Tray(String name, int max_weight) {

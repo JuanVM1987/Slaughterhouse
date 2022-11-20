@@ -3,7 +3,7 @@ syntax="proto3";
 option java_multiple_files=true;
 option java_package= "com.sdj3.dataServerSDJ3.protobuf.station2Protobuf";
 
-message PartMessage {
+message ReturnPartMessage {
 
   int32 id=1;
   string name = 2;
@@ -11,14 +11,14 @@ message PartMessage {
   int32 animalId=4;
   int32 trayId =5;
 }
-message AddPartMessage {
+message PartMessage {
 
   string name = 2;
   double weight=3;
   int32 animalId=4;
   int32 trayId =5;
 }
-message CreateTrayMessage{
+message TrayMessage{
   string  name = 1;
   int32 maxWeight = 2;
 }
@@ -32,7 +32,7 @@ message ReturnTrayMessage{
 }
 
 service Station2Service{
-  rpc creatPart(AddPartMessage)returns(PartMessage);
-  rpc createTray(CreateTrayMessage) returns(ReturnMessage);
+  rpc createPart(PartMessage) returns(ReturnPartMessage);
+  rpc createTray(TrayMessage) returns(ReturnMessage);
 }
 
