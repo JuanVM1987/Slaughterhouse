@@ -15,4 +15,9 @@ public interface PartDAO extends JpaRepository<Part,Integer> {
             where tray_id =?1 and product_id is null""",nativeQuery = true)
     List<Part> getAllPartsInTray(int partId);
 
+    @Query(value = """
+            select *
+            from part
+            where id =1 and product_id is null""",nativeQuery = true)
+    Part getPartIntTray(int partId);
 }

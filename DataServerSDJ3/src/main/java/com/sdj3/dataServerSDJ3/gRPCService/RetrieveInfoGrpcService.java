@@ -93,7 +93,7 @@ public class RetrieveInfoGrpcService extends RetrieveServiceGrpc.RetrieveService
              responseObserver.onError(status.asRuntimeException());
              return;
          }
-         AnimalMessage reply = AnimalMessage.newBuilder().setId(animal.get().getId())
+         AnimalMessage reply = AnimalMessage.newBuilder().setId(animal.get().getId()).setWeight(animal.get().getWeight())
                  .setOrigen(animal.get().getOrigen()).setArrivedDate(String.valueOf(animal.get().getArrivedDate())).build();
 
          responseObserver.onNext(reply);
