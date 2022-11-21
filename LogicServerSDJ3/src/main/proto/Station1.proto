@@ -1,0 +1,21 @@
+syntax="proto3";
+
+option java_multiple_files=true;
+option java_package= "com.sdj3.dataServerSDJ3.protobuf.station1Protobuf";
+
+message AnimalMessage{
+  int32 id=1;
+  string origen=2;
+  double weight=3;
+  string arrivedDate=4;
+}
+message RegisterAnimalMessage{
+  string origen=1;
+  double weight=2;
+  string arrivedDate=3;
+}
+
+service Station1Service {
+
+  rpc registerAnimal(RegisterAnimalMessage)returns(AnimalMessage);
+}
