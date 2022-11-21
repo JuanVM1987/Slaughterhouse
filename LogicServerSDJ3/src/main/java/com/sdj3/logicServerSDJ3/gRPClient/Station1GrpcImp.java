@@ -19,8 +19,8 @@ public class Station1GrpcImp implements Station1GrpcInterface {
     private Station1ServiceGrpc.Station1ServiceBlockingStub stub;
     */
 
-     ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",8088).usePlaintext().build();
-      Station1ServiceGrpc.Station1ServiceBlockingStub stub = Station1ServiceGrpc.newBlockingStub(channel);
+   private ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",8088).usePlaintext().build();
+    private Station1ServiceGrpc.Station1ServiceBlockingStub stub = Station1ServiceGrpc.newBlockingStub(channel);
 
     @Override
     public Animal registerAnimal(Animal animal) {

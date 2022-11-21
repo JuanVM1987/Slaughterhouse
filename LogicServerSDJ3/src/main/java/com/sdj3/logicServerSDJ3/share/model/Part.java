@@ -1,14 +1,11 @@
 package com.sdj3.logicServerSDJ3.share.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
-
-
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Part {
@@ -24,4 +21,11 @@ public class Part {
         this.id=id;
     }
 
+    @Override
+    public String toString() {
+        return "Part{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", weight=" + weight +'}';
+    }
 }
