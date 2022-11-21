@@ -37,14 +37,23 @@ public class Station3GrpcService extends Station3ServiceGrpc.Station3ServiceImpl
     @Override
     public void createProduct(ProductMessage request, StreamObserver<ReplayProductMessage> responseObserver) {
         List<Integer>listId= new ArrayList<>();
+
         //get partId
         request.getPartIdMessageList().forEach(p->listId.add(p.getPartId()));
+
         //find all parts in product
         Optional<List<Part>> partList = Optional.of(partDAO.findAllById(listId));
 
-        if (partList.get().size()!=listId.size()){
+        for (Part p:partList.get()) {
+            if (p.getProduct()!=null){
+                handlerStatus("Part Id: "+ p.getId()+" is not in the tray",responseObserver);
+                return;
+            }
+        }
 
-            handlerStatus("partId not found",responseObserver);
+     if (partList.get().size()!=listId.size()){
+
+            handlerStatus("partId not exist",responseObserver);
             return;
         }
 
@@ -55,6 +64,7 @@ public class Station3GrpcService extends Station3ServiceGrpc.Station3ServiceImpl
         for (Part p:partList.get()) {
             productWeight +=p.getWeight();
         }
+        //Round 2 decimal
         BigDecimal bd = new BigDecimal(productWeight).setScale(2, RoundingMode.HALF_UP);
 
         Set<Part> partSet = new HashSet<>(partList.get());
