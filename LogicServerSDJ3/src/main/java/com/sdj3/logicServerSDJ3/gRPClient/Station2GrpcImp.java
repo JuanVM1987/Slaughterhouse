@@ -10,8 +10,8 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.Status;
 
 public class Station2GrpcImp implements Station2GrpcInterface {
-    ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",8088).usePlaintext().build();
-    Station2ServiceGrpc.Station2ServiceBlockingStub stub = Station2ServiceGrpc.newBlockingStub(channel);
+   private final ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",8088).usePlaintext().build();
+   private final Station2ServiceGrpc.Station2ServiceBlockingStub stub = Station2ServiceGrpc.newBlockingStub(channel);
 
 
 
