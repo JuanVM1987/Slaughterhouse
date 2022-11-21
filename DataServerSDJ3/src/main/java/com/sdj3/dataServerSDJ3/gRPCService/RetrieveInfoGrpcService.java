@@ -94,7 +94,7 @@ public class RetrieveInfoGrpcService extends RetrieveServiceGrpc.RetrieveService
              return;
          }
          AnimalMessage reply = AnimalMessage.newBuilder().setId(animal.get().getId())
-                 .setOrigen(animal.get().getOrigen()).setArrivedDate(String.valueOf(animal.get().getArrivedDate())).build();
+                 .setOrigen(animal.get().getOrigen()).setWeight(animal.get().getWeight()).setArrivedDate(String.valueOf(animal.get().getArrivedDate())).build();
 
          responseObserver.onNext(reply);
          responseObserver.onCompleted();
@@ -126,6 +126,7 @@ public class RetrieveInfoGrpcService extends RetrieveServiceGrpc.RetrieveService
         }
         List<Part> partList = partDAO.getAllPartsInTray(tryId);
         ListParts.Builder builder = ListParts.newBuilder();
+
         for (Part p:partList) {
             builder.addPartMessage(PartMessage.newBuilder().setPartId(p.getId())
                     .setName(p.getName()).setWeight(p.getWeight()));
