@@ -28,7 +28,7 @@ public class Station1GrpcService extends Station1ServiceGrpc.Station1ServiceImpl
 
         Animal animal1= animalDAO.save(new Animal(request.getOrigen(),request.getWeight(), Date.valueOf(request.getArrivedDate())));
         AnimalMessage reply = AnimalMessage.newBuilder().setId(animal1.getId()).setOrigen(animal1.getOrigen())
-                .setWeight(animal1.getWeight()).setArrivedDate(request.getArrivedDate()).build();
+                .setWeight(animal1.getWeight()).setArrivedDate(String.valueOf(animal1.getArrivedDate())).build();
         responseObserver.onNext(reply);
         responseObserver.onCompleted();
 
