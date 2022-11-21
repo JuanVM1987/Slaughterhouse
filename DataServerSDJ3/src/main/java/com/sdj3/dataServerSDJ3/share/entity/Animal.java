@@ -6,10 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.sql.Date;
+
 
 @Entity
 @Data
@@ -24,10 +22,10 @@ public class Animal {
     private String origen;
     @Column(nullable = false)
     private double weight;
-    private Date arrivedDate;
+    private java.sql.Date arrivedDate;
 
 
-    public Animal(String origen, double weight, Date arrivedDate) {
+    public Animal(String origen, double weight, java.sql.Date arrivedDate) {
         this.origen = origen;
         this.weight = weight;
         this.arrivedDate = arrivedDate;
