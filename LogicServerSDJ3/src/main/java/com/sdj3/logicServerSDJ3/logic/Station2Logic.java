@@ -5,7 +5,7 @@ import com.sdj3.logicServerSDJ3.logic.logicInterface.Station2LogicInterface;
 import com.sdj3.logicServerSDJ3.share.dtos.CreatePartDto;
 import com.sdj3.logicServerSDJ3.share.model.Tray;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Service
 public class Station2Logic implements Station2LogicInterface {

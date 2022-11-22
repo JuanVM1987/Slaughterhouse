@@ -1,14 +1,9 @@
 package com.sdj3.logicServerSDJ3.controllers;
-
 import com.sdj3.logicServerSDJ3.logic.logicInterface.RetrieveLogicInterface;
+import com.sdj3.logicServerSDJ3.share.dtos.*;
 import com.sdj3.logicServerSDJ3.share.model.Animal;
-import com.sdj3.logicServerSDJ3.share.model.Part;
-import com.sdj3.logicServerSDJ3.share.model.Product;
-import com.sdj3.logicServerSDJ3.share.model.Tray;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import javax.print.attribute.standard.Media;
 import java.util.ArrayList;
 
 @RestController
@@ -21,7 +16,7 @@ public class RetrieveController {
     }
         @RequestMapping(value = "/getPruductsByAnimal/{id}",method = RequestMethod.GET,produces = {MediaType.APPLICATION_JSON_VALUE})
         @ResponseBody
-        public ArrayList<Product> getAllProductFromAnimal(@PathVariable int id){
+        public ArrayList<ReturnProductDto> getAllProductFromAnimal(@PathVariable int id){
 
         return logic.getAllProductFromAnimal(id);
     }
@@ -43,12 +38,12 @@ public class RetrieveController {
     }
     @RequestMapping(value = "/getAllTrays",method = RequestMethod.GET,produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
-    public ArrayList<Tray> getAllTrays() {
+    public ArrayList<ReturnTrayDto> getAllTrays() {
         return logic.getAllTrays();
     }
-    @RequestMapping (value = "/getAllPartsInTray",method = RequestMethod.GET,produces = {MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping (value = "/getAllPartsInTray/{id}",method = RequestMethod.GET,produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
-    public ArrayList<Part> getAllPartsInTray(@PathVariable int id) {
+    public ArrayList<ReturnPartDto> getAllPartsInTray(@PathVariable int id) {
         return logic.getAllPartsInTray(id);
     }
 
