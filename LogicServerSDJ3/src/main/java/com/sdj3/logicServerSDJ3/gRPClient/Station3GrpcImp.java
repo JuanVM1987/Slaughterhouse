@@ -1,17 +1,18 @@
 package com.sdj3.logicServerSDJ3.gRPClient;
 
+import com.sdj3.dataServerSDJ3.protobuf.station3Protobuf.*;
 import com.sdj3.logicServerSDJ3.gRPClient.gRPCInterface.Station3GrpcInterface;
 
-import com.sdj3.logicServerSDJ3.protobuf.station3Protobuf.*;
 import com.sdj3.logicServerSDJ3.share.dtos.CreateProductDto;
 import com.sdj3.logicServerSDJ3.share.model.Part;
 import com.sdj3.logicServerSDJ3.share.model.Product;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class Station3GrpcImp implements Station3GrpcInterface {
    private final ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",8088).usePlaintext().build();
    private final Station3ServiceGrpc.Station3ServiceBlockingStub stub = Station3ServiceGrpc.newBlockingStub(channel);
