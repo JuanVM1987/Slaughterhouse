@@ -1,9 +1,10 @@
 package com.sdj3.logicServerSDJ3.gRPClient;
 
+import com.sdj3.dataServerSDJ3.protobuf.station1Protobuf.AnimalMessage;
+import com.sdj3.dataServerSDJ3.protobuf.station1Protobuf.RegisterAnimalMessage;
+import com.sdj3.dataServerSDJ3.protobuf.station1Protobuf.Station1ServiceGrpc;
 import com.sdj3.logicServerSDJ3.gRPClient.gRPCInterface.Station1GrpcInterface;
-import com.sdj3.logicServerSDJ3.protobuf.station1Protobuf.AnimalMessage;
-import com.sdj3.logicServerSDJ3.protobuf.station1Protobuf.RegisterAnimalMessage;
-import com.sdj3.logicServerSDJ3.protobuf.station1Protobuf.Station1ServiceGrpc;
+
 import com.sdj3.logicServerSDJ3.share.model.Animal;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -22,7 +23,6 @@ public class Station1GrpcImp implements Station1GrpcInterface {
    private ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",8088).usePlaintext().build();
     private Station1ServiceGrpc.Station1ServiceBlockingStub stub = Station1ServiceGrpc.newBlockingStub(channel);
 
-    @Override
     public Animal registerAnimal(Animal animal) {
 
 
