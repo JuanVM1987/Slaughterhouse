@@ -1,7 +1,6 @@
 package com.sdj3.logicServerSDJ3.logic;
 
 import com.sdj3.logicServerSDJ3.gRPClient.gRPCInterface.Station3GrpcInterface;
-import com.sdj3.logicServerSDJ3.logic.logicInterface.Station1LogicInterface;
 import com.sdj3.logicServerSDJ3.logic.logicInterface.Station3LogicInterface;
 import com.sdj3.logicServerSDJ3.share.dtos.CreateProductDto;
 import com.sdj3.logicServerSDJ3.share.model.Product;

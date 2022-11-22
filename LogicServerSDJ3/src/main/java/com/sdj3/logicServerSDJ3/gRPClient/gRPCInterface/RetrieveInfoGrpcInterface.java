@@ -6,14 +6,15 @@ import com.sdj3.logicServerSDJ3.share.dtos.ReturnTrayDto;
 import com.sdj3.logicServerSDJ3.share.model.Animal;
 import com.sdj3.logicServerSDJ3.share.model.Part;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface RetrieveInfoGrpcInterface {
 
-    List<ReturnProductDto> getAllProductFromAnimal(int animalId);
-    List<Animal> getAnimalFromProduct(int productId);
-    List<Animal> getAllAnimals();
+    ArrayList<ReturnProductDto> getAllProductFromAnimal(int animalId);
+    ArrayList<Animal> getAnimalFromProduct(int productId);
+    ArrayList<Animal> getAllAnimals();
     Animal getAnimalById(int animalId);
-    List<ReturnTrayDto> getAllTrays();
-    List<ReturnPartDto>getAllPartsInTray(int trayId);
+    ArrayList<ReturnTrayDto> getAllTrays();
+    ArrayList<ReturnPartDto>getAllPartsInTray(int trayId);
 }
