@@ -18,6 +18,7 @@ public class RetrieveLogic implements RetrieveLogicInterface {
 
     @Override
     public ArrayList<ReturnProductDto> getAllProductFromAnimal(int id) {
+
         return client.getAllProductFromAnimal(id);
     }
 

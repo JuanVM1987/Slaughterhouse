@@ -1,7 +1,8 @@
 package com.sdj3.logicServerSDJ3.gRPClient;
 
-import com.sdj3.dataServerSDJ3.protobuf.retrieveInfoProtobuf.*;
+
 import com.sdj3.logicServerSDJ3.gRPClient.gRPCInterface.RetrieveInfoGrpcInterface;
+import com.sdj3.logicServerSDJ3.protobuf.retrieveInfoProtobuf.*;
 import com.sdj3.logicServerSDJ3.share.dtos.*;
 import com.sdj3.logicServerSDJ3.share.model.Animal;
 import io.grpc.ManagedChannel;
@@ -59,9 +60,13 @@ public class RetrieveInfoGrpcImp implements RetrieveInfoGrpcInterface {
 
     @Override
     public Animal getAnimalById(int animalId) {
+
         AnimalIdMessage id = AnimalIdMessage.newBuilder().setId(animalId).build();
-        AnimalMessage a =stub.getAnimalById(id);
-        return new Animal(a.getId(),a.getOrigen(),a.getWeight(), Date.valueOf(a.getArrivedDate()));
+
+            AnimalMessage a =stub.getAnimalById(id);
+            return new Animal(a.getId(),a.getOrigen(),a.getWeight(), Date.valueOf(a.getArrivedDate()));
+
+
     }
 
     @Override

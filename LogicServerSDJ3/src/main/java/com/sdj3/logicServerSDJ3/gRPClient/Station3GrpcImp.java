@@ -1,7 +1,8 @@
 package com.sdj3.logicServerSDJ3.gRPClient;
 
-import com.sdj3.dataServerSDJ3.protobuf.station3Protobuf.*;
+
 import com.sdj3.logicServerSDJ3.gRPClient.gRPCInterface.Station3GrpcInterface;
+import com.sdj3.logicServerSDJ3.protobuf.station3Protobuf.*;
 import com.sdj3.logicServerSDJ3.share.dtos.CreateProductDto;
 import com.sdj3.logicServerSDJ3.share.model.*;
 import io.grpc.ManagedChannel;

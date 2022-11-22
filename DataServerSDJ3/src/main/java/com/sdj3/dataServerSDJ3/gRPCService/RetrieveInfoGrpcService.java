@@ -40,7 +40,12 @@ public class RetrieveInfoGrpcService extends RetrieveServiceGrpc.RetrieveService
     @Override
     public void getAllProductFromAnimal(AnimalIdMessage request, StreamObserver<ListProduct> responseObserver){
         int animalId=request.getId();
-
+        Optional<Animal> animal =animalDAO.findById(animalId);
+        if (animal.isEmpty()){
+            Status status = Status.FAILED_PRECONDITION.withDescription("Animal with id : "+animalId+", not found");
+            responseObserver.onError(status.asRuntimeException());
+            return;
+        }
         List<Product> productList=productDAO.getAllProductsFromAnimal(animalId);
         ListProduct.Builder builder =ListProduct.newBuilder();
         for (Product p:productList) {
@@ -55,6 +60,12 @@ public class RetrieveInfoGrpcService extends RetrieveServiceGrpc.RetrieveService
     @Override
     public void getAnimalFromProduct(ProductIdMessage request, StreamObserver<ListAnimals> responseObserver) {
         int productId= request.getId();
+        Optional<Product> product = productDAO.findById(productId);
+        if (product.isEmpty()){
+            Status status = Status.FAILED_PRECONDITION.withDescription("Product with id : "+productId+", not found");
+            responseObserver.onError(status.asRuntimeException());
+            return;
+        }
         List<Animal> animalList =animalDAO.getAnimalFromProduct(productId);
 
         ListAnimals.Builder builder = ListAnimals.newBuilder();
